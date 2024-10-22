@@ -1,4 +1,4 @@
-package com.tvtest
+package com.sipid
 
 import android.app.Application
 import com.facebook.react.PackageList
@@ -10,6 +10,8 @@ import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.load
 import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.soloader.SoLoader
+
+import com.facebook.react.modules.network.OkHttpClientProvider
 
 class MainApplication : Application(), ReactApplication {
 
@@ -33,6 +35,7 @@ class MainApplication : Application(), ReactApplication {
     get() = getDefaultReactHost(applicationContext, reactNativeHost)
 
   override fun onCreate() {
+    OkHttpClientProvider.setOkHttpClientFactory(SSLPinningFactory())
     super.onCreate()
     SoLoader.init(this, false)
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {

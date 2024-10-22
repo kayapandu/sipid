@@ -1,4 +1,4 @@
-package com.tvtest
+package com.sipid
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
